@@ -1,0 +1,1 @@
+By default all extensions installed by the code server will appear here.
