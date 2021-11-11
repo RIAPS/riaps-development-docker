@@ -1,7 +1,5 @@
 FROM python:3.9-slim-buster
 RUN apt-get update && apt-get -y --no-install-recommends install gpg  wget curl ca-certificates zip bzip2
-COPY requirements.txt /requirements.txt
-RUN set -ex && pip install -r /requirements.txt
 RUN wget https://github.com/cdr/code-server/releases/download/v3.12.0/code-server-3.12.0-linux-amd64.tar.gz \
     && tar -xzvf code-server-3.12.0-linux-amd64.tar.gz && chmod +x code-server-3.12.0-linux-amd64/code-server
 RUN rm code-server-3.12.0-linux-amd64.tar.gz
@@ -22,4 +20,6 @@ RUN ln -s /opt/8.0.275.hs-adpt/bin/java /usr/bin/java
 RUN java -version
 COPY docker-entrypoint.sh /usr/local/bin/
 ENV PATH="code-server-3.12.0-linux-amd64/bin/:${PATH}"
+COPY requirements.txt /requirements.txt
+RUN set -ex && pip install -r /requirements.txt
 ENTRYPOINT ["docker-entrypoint.sh"]
