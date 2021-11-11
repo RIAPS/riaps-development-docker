@@ -14,5 +14,5 @@ Extensions will be in extensions folder.
 
 JupyterLab will be running on:
 
-http://localhost:2222 with a token of `local-development`
+http://localhost:2222 with a token of `riaps`
 
